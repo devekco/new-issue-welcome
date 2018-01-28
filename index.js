@@ -8,7 +8,7 @@ module.exports = robot => {
     const countIssue = response.data.filter(data => !data.pull_request)
     if (countIssue.length === 1) {
       try {
-        const config = await robot.config.get(context, defaultConfig)
+        const config = await robot.config.get(context)
 
         if (config.newIssueWelcomeComment) {
           context.github.issues.createComment(context.issue({body: config.newIssueWelcomeComment}))
